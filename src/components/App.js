@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { getPosts } from '../api';
-
+import Home from '../pages/Home';
 function App() {
   useEffect(() => {
     const fetchPosts = async () => {
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>hello</p>
+        <Home />
       </header>
     </div>
   );
