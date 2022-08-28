@@ -1,45 +1,52 @@
+import styles from '../styles/home.module.css';
+
 const Home = () => {
   return (
-    <div className="posts-list">
-      <div className="posts-wrapper">
-        <div className="posts-header">
-          <div className="posts-avatar">
+    <div className={styles.postsList}>
+      <div className={styles.postWrapper}>
+        <div className={styles.postHeader}>
+          <div className={styles.postAvatar}>
             <img
               src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
               alt="user-pic"
             />
             <div>
-              <span className="post-author"> Avi</span>
-              <span className="post-time"> A Minute Ago</span>
+              <span className={styles.postAuthor}>Avi</span>
+              <span className={styles.postTime}>a minute ago</span>
             </div>
           </div>
-          <div className="posts-actions">
-            <div className="posts-like">
+          <div className={styles.postContent}>Post Conetnt</div>
+
+          <div className={styles.postActions}>
+            <div className={styles.postLike}>
               <img
                 src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
                 alt="likes-icon"
               />
               <span>5</span>
             </div>
-            <div className="posts-comments-icon">
+
+            <div className={styles.postCommentsIcon}>
               <img
-                src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
+                src="https://image.flaticon.com/icons/svg/1380/1380338.svg"
                 alt="comments-icon"
               />
               <span>2</span>
             </div>
           </div>
-          <div className="posts-comment-box">
-            <input placeholder="start typing" />
+          <div className={styles.postCommentBox}>
+            <input placeholder="Start typing a comment" />
           </div>
-          <div className="posts-comments-list">
-            <div className="posts-comment-item">
-              <div className="posts-comment-header">
-                <span className="post-comment-author">Bill</span>
-                <span className="post-comment-time"> a minute ago</span>
-                <span className="post-comment-likes"> 22</span>
+
+          <div className={styles.postCommentsList}>
+            <div className={styles.postCommentsItem}>
+              <div className={styles.postCommentHeader}>
+                <span className={styles.postCommentAuthor}>Bill</span>
+                <span className={styles.postCommentTime}>a minute ago</span>
+                <span className={styles.postCommentLikes}>22</span>
               </div>
-              <div className="post-comment-content"> Random Content</div>
+
+              <div className={styles.postCommentContent}>Random comment</div>
             </div>
           </div>
         </div>
@@ -47,4 +54,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;
