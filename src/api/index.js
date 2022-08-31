@@ -25,8 +25,7 @@ const customFetch = async (url, { body, ...customConfig }) => {
   try {
     const response = await fetch(url, config);
     console.log(response);
-    const data = await response.json();
-
+    const data = await response.json(); //returns a promise, the .json() is used to parse the response, only then we can access it
     if (data.success) {
       return {
         data: data.data,
