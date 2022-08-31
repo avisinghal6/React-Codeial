@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getPosts } from '../api';
 import Home from '../pages/Home';
 import Loader from './Loader';
+import Navbar from './Navbar';
 function App() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Navbar />
         <Home posts={posts} />
       </header>
     </div>
