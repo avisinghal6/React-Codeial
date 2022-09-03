@@ -48,6 +48,6 @@ export const getPosts = (page = 1, limit = 5) => {
   });
 };
 
-const createPost = (page, limit) => {
-  return customFetch();
-};
+// const createPost = (page, limit) => {
+//   return customFetch();
+// };

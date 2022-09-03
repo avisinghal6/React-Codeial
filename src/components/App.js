@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { getPosts } from '../api';
 import Home from '../pages/Home';
 import Loader from './Loader';
 import Navbar from './Navbar';
+import { Login } from '../pages';
 function App() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,6 +19,7 @@ function App() {
       setLoading(false);
     };
     fetchPosts();
+    console.log('inside');
   }, []);
 
   if (loading) return <Loader />;
@@ -24,7 +27,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Navbar />
-        <Home posts={posts} />
+
+        <Router>
+          <Routes>
+            <Route path="/Login" element={<Login />} />
+            <Route path="/" element={<Home posts={posts} />} />
+          </Routes>
+        </Router>
       </header>
     </div>
   );
