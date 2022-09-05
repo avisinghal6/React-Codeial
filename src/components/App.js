@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import Loader from './Loader';
 import Navbar from './Navbar';
 import { Login } from '../pages';
+// adding comments
 function App() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,9 +27,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Navbar />
-
         <Router>
+          <Navbar />
           <Routes>
             <Route path="/Login" element={<Login />} />
             <Route path="/" element={<Home posts={posts} />} />
