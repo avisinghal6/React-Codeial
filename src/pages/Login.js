@@ -2,19 +2,29 @@ import styles from '../styles/login.module.css';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// toast.configure();
+import { login } from '../api';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loggingIn, setLogginIn] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLogginIn(true);
 
     if (!email || !password) {
       return toast('enter email and password');
     }
+
+    const response = await login(email, password);
+
+    if (response.success) {
+      toast('successfully loggeg in');
+    } else {
+      toast(response.message);
+    }
+
+    setLogginIn(false);
   };
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit}>
@@ -38,8 +48,10 @@ const Login = () => {
         />
       </div>
 
-      <div className={styles.field} disabled={loggingIn}>
-        <button>{loggingIn ? 'Logging In..' : 'Log In'}</button>
+      <div className={styles.field}>
+        <button disabled={loggingIn}>
+          {loggingIn ? 'Logging In..' : 'Log In'}
+        </button>
       </div>
     </form>
   );
