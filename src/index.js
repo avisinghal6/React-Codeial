@@ -4,7 +4,7 @@ import './styles/index.css';
 import App from './components/App';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthProvider } from './providers/AuthProvider'; // surrounded the "app" component by authprovider so that auth state can be
-//accessed throughout the app.
+//available throughout the app.
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

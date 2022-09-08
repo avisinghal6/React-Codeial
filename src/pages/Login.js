@@ -2,12 +2,15 @@ import styles from '../styles/login.module.css';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { login } from '../api';
+// import { login } from '../api';
+import { useAuth } from '../hooks';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loggingIn, setLogginIn] = useState(false);
+  const auth = useAuth();
 
+  console.log(auth);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLogginIn(true);
@@ -16,10 +19,10 @@ const Login = () => {
       return toast('enter email and password');
     }
 
-    const response = await login(email, password);
+    const response = await auth.login(email, password);
 
     if (response.success) {
-      toast('successfully loggeg in');
+      toast('successfully logged in');
     } else {
       toast(response.message);
     }
