@@ -6,6 +6,7 @@ import Loader from './Loader';
 import Navbar from './Navbar';
 import { Login } from '../pages';
 import { useAuth } from '../hooks';
+import Signup from '../pages/Signup';
 // adding comments
 function App() {
   // const [posts, setPosts] = useState([]);
@@ -36,6 +37,7 @@ function App() {
           <Routes>
             <Route path="/Login" element={<Login />} />
             <Route path="/" element={<Home />} />
+            <Route path="/Register" element={<Signup />} />
           </Routes>
         </Router>
       </header>
