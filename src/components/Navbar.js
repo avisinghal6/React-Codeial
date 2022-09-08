@@ -1,6 +1,9 @@
 import styles from '../styles/navbar.module.css';
 import { Link } from 'react-router-dom'; //replacement for <a> in react, as <a> refreshes the page.
+import { useAuth } from '../hooks';
 const Navbar = () => {
+  const auth = useAuth();
+
   return (
     <div className={styles.nav}>
       <div className={styles.leftDiv}>
@@ -9,24 +12,34 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={styles.rightNav}>
-        <div className={styles.user}>
-          <Link to="/">
-            <img alt="" src=" " className={styles.userDp} />
-          </Link>
-          <span> Avi</span>
-        </div>
-
+        {auth.user && (
+          <div className={styles.user}>
+            <Link to="/">
+              <img alt="" src=" " className={styles.userDp} />
+            </Link>
+            <span> {auth.user.name}</span>
+          </div>
+        )}
+        {/* <></> are called fragments */}
         <div className={styles.navLinks}>
           <ul>
-            <li>
-              <Link to="/Login"> Log In</Link>
-            </li>
-            <li>
-              <Link to="/"> Log Out</Link>
-            </li>
-            <li>
-              <Link to="/"> Register</Link>
-            </li>
+            {auth.user ? (
+              <>
+                <li>
+                  <button onClick={auth.logout}> Log Out</button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="/Login"> Log In</Link>
+                </li>
+
+                <li>
+                  <Link to="/"> Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
