@@ -1,10 +1,12 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import { login as userLogin } from '../api';
+import jwt from 'jwt-decode';
 import {
   setItemInLocalStorage,
   LOCALSTORAGE_TOKEN_KEY,
   removeItemFromLocalStorage,
+  getItemFromLocalStorage,
 } from '../utils';
 export const useAuth = () => {
   return useContext(AuthContext); //hook to get the state from authContext so that we dont have to import authConteext everytime
@@ -12,7 +14,17 @@ export const useAuth = () => {
 export const useProvideAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const userToken = getItemFromLocalStorage(LOCALSTORAGE_TOKEN_KEY);
 
+    if (userToken) {
+      const user = jwt(userToken);
+      setUser(user);
+      setLoading(false);
+    } else if (userToken == null) {
+      setLoading(false);
+    }
+  }, []);
   const login = async (email, password) => {
     const response = await userLogin(email, password);
 

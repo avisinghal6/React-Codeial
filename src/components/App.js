@@ -5,10 +5,13 @@ import Home from '../pages/Home';
 import Loader from './Loader';
 import Navbar from './Navbar';
 import { Login } from '../pages';
+import { useAuth } from '../hooks';
 // adding comments
 function App() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const auth = useAuth();
+
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await getPosts();
@@ -23,7 +26,7 @@ function App() {
     console.log('inside');
   }, []);
 
-  if (loading) return <Loader />;
+  if (auth.loading) return <Loader />;
   return (
     <div className="App">
       <header className="App-header">

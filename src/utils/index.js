@@ -13,7 +13,7 @@ export const getItemFromLocalStorage = (key) => {
     console.error('can not get from LS');
   }
 
-  localStorage.getItem(key);
+  return localStorage.getItem(key);
 };
 
 export const removeItemFromLocalStorage = (key) => {
