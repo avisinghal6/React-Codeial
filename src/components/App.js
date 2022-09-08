@@ -8,24 +8,25 @@ import { Login } from '../pages';
 import { useAuth } from '../hooks';
 // adding comments
 function App() {
-  const [posts, setPosts] = useState([]);
+  // const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const auth = useAuth();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await getPosts();
-      console.log('response', response);
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const response = await getPosts();
+  //     console.log('response', response);
 
-      if (response.success) {
-        setPosts(response.data.posts);
-      }
-      setLoading(false);
-    };
-    fetchPosts();
-    console.log('inside');
-  }, []);
+  //     if (response.success) {
+  //       setPosts(response.data.posts);
+  //     }
+  //     setLoading(false);
+  //   };
+  //   fetchPosts();
+  //   console.log('inside');
+  // }, []);
 
+  // posts={posts}
   if (auth.loading) return <Loader />;
   return (
     <div className="App">
@@ -34,7 +35,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/Login" element={<Login />} />
-            <Route path="/" element={<Home posts={posts} />} />
+            <Route path="/" element={<Home />} />
           </Routes>
         </Router>
       </header>
