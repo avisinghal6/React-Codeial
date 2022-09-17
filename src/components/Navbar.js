@@ -15,7 +15,7 @@ const Navbar = () => {
         {auth.user && (
           <div className={styles.user}>
             <Link to="/Settings">
-              <img alt="Avatar" src=" " className={styles.userDp} />
+              <img alt="" src=" " className={styles.userDp} />
             </Link>
             <span> {auth.user.name}</span>
           </div>
