@@ -6,6 +6,7 @@ import Loader from './Loader';
 import Navbar from './Navbar';
 import { Login } from '../pages';
 import { useAuth } from '../hooks';
+import Settings from '../pages/Settings';
 import Signup from '../pages/Signup';
 // adding comments
 function App() {
@@ -38,6 +39,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/" element={<Home />} />
             <Route path="/Register" element={<Signup />} />
+            <Route path="/Settings" element={<Settings />} />
           </Routes>
         </Router>
       </header>
