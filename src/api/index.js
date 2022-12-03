@@ -4,7 +4,7 @@ const customFetch = async (url, { body, ...customConfig }) => {
   const token = window.localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
   //setting headers
   const headers = {
-    'content-type': 'application/x-www-form-url-encoded', //this is the format expected by the server
+    'content-type': 'application/x-www-form-urlencoded', //this is the format expected by the server
   };
 
   if (token) {
@@ -49,6 +49,7 @@ export const getPosts = (page = 1, limit = 5) => {
 
 export const login = (email, password) => {
   return customFetch(API_URLS.login(), {
+    mode: 'no-cors',
     method: 'POST',
     body: { email, password },
   });
@@ -56,6 +57,7 @@ export const login = (email, password) => {
 
 export const register = async (name, email, password, confirmPassword) => {
   return customFetch(API_URLS.signup(), {
+    mode: 'no-cors',
     method: 'POST',
     body: { name, email, password, confirm_password: confirmPassword },
   });
@@ -64,7 +66,7 @@ export const register = async (name, email, password, confirmPassword) => {
 export const editProfile = async (userId, name, password, confirmPassword) => {
   return customFetch(API_URLS.editUser(), {
     method: 'POST',
-    body: { id: userId, name, password, confirm_password: confirmPassword },
+    body: { userId, name, password, confirmPassword },
   });
 };
 // const createPost = (page, limit) => {

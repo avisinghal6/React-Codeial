@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import { useAuth } from '../hooks';
 import styles from '../styles/login.module.css';
 
@@ -62,6 +61,9 @@ const Signup = () => {
     setSigningUp(false);
   };
 
+  if (auth.user) {
+    return <Navigate to="/" />;
+  }
   return (
     <form className={styles.loginForm} onSubmit={handleFormSubmit}>
       <span className={styles.loginSignupHeader}> Signup</span>

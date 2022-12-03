@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
 import { getPosts } from '../api';
 import Home from '../pages/Home';
 import Loader from './Loader';
@@ -9,6 +14,23 @@ import { useAuth } from '../hooks';
 import Settings from '../pages/Settings';
 import Signup from '../pages/Signup';
 // adding comments
+
+function PrivateRoute({ children, ...rest }) {
+  const auth = useAuth();
+
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        if (auth.user) {
+          return children;
+        }
+
+        return <Navigate to="/login" />;
+      }}
+    />
+  );
+}
 function App() {
   // const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
